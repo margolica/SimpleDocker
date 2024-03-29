@@ -1,0 +1,30 @@
+version: '3'
+services:
+  server:
+    build: ./server/
+    container_name: docker_01
+    volumes:
+      - '/home/danil/Linux/DO5_SimpleDocker-1/src/Part_6/server/nginx_server.conf:/etc/nginx/nginx.conf'
+    ports:
+      - 85:81
+    restart: unless-stopped
+    networks:
+      - webnet
+  
+  proxy:
+    build: ./proxy/
+    container_name: docker_02
+    volumes:
+      - '/home/danil/Linux/DO5_SimpleDocker-1/src/Part_6/proxy/nginx_proxy.conf:/etc/nginx/nginx.conf'
+    ports:
+      - 80:8080
+    restart: unless-stopped
+    depends_on:
+      - server
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
+    name: webnet
