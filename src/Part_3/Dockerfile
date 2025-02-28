@@ -10,11 +10,6 @@ COPY ./apt-get.sh .
 RUN useradd -d /home/dockle -m -s /bin/bash dockle
 USER dockle
 
-
-
-
-
-
 ENTRYPOINT ["sh", "./start_server.sh"]
 
 
