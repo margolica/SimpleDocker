@@ -1,4 +1,4 @@
-# Simple Bash
+# Simple Docker
 
 ## Описание проекта
 
